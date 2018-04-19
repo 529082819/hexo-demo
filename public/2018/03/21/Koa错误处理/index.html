@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="什么是修饰器修饰器（Decorator）是ES7的一个提案，它的出现能解决两个问题：  不同类间共享方法 编译期对类和方法的行为进行改变用法也很简单，就是在类或方法的上面加一个@符。">
+<meta name="description" content="在进行网站后端代码编写时总是会有一种情况发生，那就是错误获取和返回，谁都不能保证自己写的代码一定是正确的，或者在调用数据库获取数据、读取redis时总会有一些不可预料的情况发生，当发生这些情况时，总不能放任不管，否则程序就会挂掉了。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES7中javascript修饰器">
-<meta property="og:url" content="http://yoursite.com/2018/03/21/ES7中Decorator修饰器/index.html">
+<meta property="og:title" content="Nodejs-koa之如何优雅的进行错误捕捉和返回">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/Koa错误处理/index.html">
 <meta property="og:site_name" content="谌小伟博客">
-<meta property="og:description" content="什么是修饰器修饰器（Decorator）是ES7的一个提案，它的出现能解决两个问题：  不同类间共享方法 编译期对类和方法的行为进行改变用法也很简单，就是在类或方法的上面加一个@符。">
+<meta property="og:description" content="在进行网站后端代码编写时总是会有一种情况发生，那就是错误获取和返回，谁都不能保证自己写的代码一定是正确的，或者在调用数据库获取数据、读取redis时总会有一些不可预料的情况发生，当发生这些情况时，总不能放任不管，否则程序就会挂掉了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T07:07:27.000Z">
+<meta property="og:updated_time" content="2018-04-19T02:13:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES7中javascript修饰器">
-<meta name="twitter:description" content="什么是修饰器修饰器（Decorator）是ES7的一个提案，它的出现能解决两个问题：  不同类间共享方法 编译期对类和方法的行为进行改变用法也很简单，就是在类或方法的上面加一个@符。">
+<meta name="twitter:title" content="Nodejs-koa之如何优雅的进行错误捕捉和返回">
+<meta name="twitter:description" content="在进行网站后端代码编写时总是会有一种情况发生，那就是错误获取和返回，谁都不能保证自己写的代码一定是正确的，或者在调用数据库获取数据、读取redis时总会有一些不可预料的情况发生，当发生这些情况时，总不能放任不管，否则程序就会挂掉了。">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/21/ES7中Decorator修饰器/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/Koa错误处理/"/>
 
 
 
 
 
-  <title> ES7中javascript修饰器 | 谌小伟博客 </title>
+  <title> Nodejs-koa之如何优雅的进行错误捕捉和返回 | 谌小伟博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -250,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/ES7中Decorator修饰器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/Koa错误处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Wei">
@@ -271,7 +271,7 @@
             
             
               
-                ES7中javascript修饰器
+                Nodejs-koa之如何优雅的进行错误捕捉和返回
               
             
           </h1>
@@ -305,8 +305,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/21/ES7中Decorator修饰器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/21/ES7中Decorator修饰器/" itemprop="commentCount"></span>
+                <a href="/2018/03/21/Koa错误处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/21/Koa错误处理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -332,98 +332,14 @@
       
 
       
-        <h2 id="什么是修饰器"><a href="#什么是修饰器" class="headerlink" title="什么是修饰器"></a>什么是修饰器</h2><p>修饰器（Decorator）是ES7的一个提案，它的出现能解决两个问题：</p>
-<ul>
-<li>不同类间共享方法</li>
-<li>编译期对类和方法的行为进行改变<br>用法也很简单，就是在类或方法的上面加一个@符。</li>
-</ul>
+        <p>在进行网站后端代码编写时总是会有一种情况发生，那就是错误获取和返回，谁都不能保证自己写的代码一定是正确的，或者在调用数据库获取数据、读取redis时总会有一些不可预料的情况发生，当发生这些情况时，总不能放任不管，否则程序就会挂掉了。</p>
+<hr>
 <a id="more"></a>
-<h2 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h2><pre><code>@setProp 
-class User {}
-function setProp(target) {
-   target.age = 30
-}
-console.log(User.age)
-</code></pre><p>这个例子要表达的是对User类使用setProp这个方法进行修饰，用来增加User类中age的属性，setProp方法会接收3个参数，我们现在接触第一个，target代表User类本身。</p>
-<h2 id="修饰类-自定义参数值"><a href="#修饰类-自定义参数值" class="headerlink" title="修饰类(自定义参数值)"></a>修饰类(自定义参数值)</h2><pre><code>@setProp(20)
-class User {}
-
-function setProp(value) {
-      return function (target) {
-        target.age = value
-    }
-}
-console.log(User.age)
-</code></pre><p>此例和上面功能基本一致，唯一差别在于值是参考修饰函数传过来的</p>
-<h2 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h2><pre><code>class User {
-    @readonly
-    getName() {
-        return &apos;Hello World&apos;
-    }
-}
-
-// readonly修饰函数，对方法进行只读操作
-function readonly(target, name, descriptor) {
-    descriptor.writable = false
-    return descriptor
-}
-
-let u = new User()
-// 尝试修改函数，在控制台会报错
-u.getName = () =&gt; {
-    return &apos;I will override&apos;
-}
-</code></pre><p>上例中，我们对User类中的getName方法使用readonly修饰器进行修饰，使得方法不能被修改。第一个参数我们已经知道了，参数name为方法名，也就是readonly，参数descriptor是个啥东西呢，看到这行descriptor.writable = false，我们大家猜的也差不多了，这三个参数对应的就是Object.defineProperty的三个参数，我们来看一下：</p>
-<pre><code>Object.defineProperty(obj,&quot;test&quot;,{
-    configurable: true,
-    value:&apos;xxx&apos;
-})
-</code></pre><p>我们设置descriptor.writable = false就是让函数不可以被修改，如果我们写成</p>
-<pre><code>descriptor.value = &apos;function ({ 
-    console.log(&apos;Hello decorator&apos;) 
-}&apos;
-</code></pre><p>那么，输出就是Hello World了，而是Hello decorator，是不是已经意识到修饰器的好处了。现在我们来看看实际工作中，我们用到修饰器的例子</p>
-<h3 id="检查登录demo"><a href="#检查登录demo" class="headerlink" title="检查登录demo"></a>检查登录demo</h3><p>这个例子在实际的开发中常用得到，我们一些操作前，必须得判断用户是否登录，比较点赞、结算、发送弹幕…按照之前的写法，我们必须在每一个方法中判断用户的登录情况，然后再进行业务的操作，很显然前置条件和业务又混到了一起，用修饰器，就可以完美的解决这一问题，代码如下：</p>
-<pre><code>class User {
-    // 获取已登录用户的用户信息
-    @checkLogin
-    getUserInfo() {
-        /**
-         * 之前，我们都会这么写：
-         *      if(checkLogin()) {
-         *          // 业务代码
-         *      }
-         *  这段代码会在每一个需要登录的方法中执行
-         *  还是上面的问题，执行的前提和业务又混到了一起
-         */
-        console.log(&apos;获取已登录用户的用户信息&apos;)
-    }
-    // 发送消息
-    @checkLogin
-    sendMsg() {
-        console.log(&apos;发送消息&apos;)
-    }
-}
-
-// 检查用户是否登录，如果没有登录，就跳转到登录页面
-function checkLogin(target, name, descriptor) {
-    let method = descriptor.value
-
-    // 模拟判断条件
-    let isLogin = true
-
-    descriptor.value = function (...args) {
-        if (isLogin) {
-            method.apply(this, args)
-        } else {
-            console.log(&apos;没有登录，即将跳转到登录页面...&apos;)
-        }
-    }
-}
-let u = new User()
-u.getUserInfo()
-u.sendMsg()
-</code></pre><p>不管是修改函数的参数值，还是增加属性，还是执行的先决条件，我们都可以使用修饰器，这种编程的方式，就是面对切面编程</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const Koa = require(<span class="string">'koa2'</span>);</span><br><span class="line">const router = require(<span class="string">'koa-router'</span>)();</span><br><span class="line">const app = new Koa();</span><br><span class="line"> </span><br><span class="line">/**</span><br><span class="line"> * 错误捕捉中间件</span><br><span class="line"> */</span><br><span class="line">app.use(async(ctx, next) =&gt; &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    ctx.error = (code, message) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (typeof code === <span class="string">'string'</span>) &#123;</span><br><span class="line">        message = code;</span><br><span class="line">        code = 500;</span><br><span class="line">      &#125;</span><br><span class="line">      ctx.throw(code || 500, message || <span class="string">'服务器错误'</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">    await next();</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    <span class="built_in">let</span> status = e.status || 500;</span><br><span class="line">    <span class="built_in">let</span> message = e.message || <span class="string">'服务器错误'</span>;</span><br><span class="line">    ctx.response.body = &#123; status, message &#125;;</span><br><span class="line"> </span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">app.use(require(<span class="string">'koa-bodyparser'</span>)());</span><br><span class="line">app.listen(3000);</span><br><span class="line">console.log(<span class="string">'start at port 3000...'</span>);</span><br></pre></td></tr></table></figure>
+<p>这段代码启动了koa，并有一个中间件来专门处理koa错误。在中间件里，我是给ctx对象添加了一个error方法，接收错误编号和错误内容，也可以不写错误编号，默认500，当执行ctx.error方法时，就会抛出一个异常，这样，在其他的路由或中间件里，代码执行到ctx.error时就会直接跳回到我的错误捕捉中间件，ctx.error后面的代码就不会再执行了。</p>
+<p>使用方法也很简单。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">router.get(<span class="string">'/'</span>,async(ctx)=&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(!ctx.request.query.project)&#123;</span><br><span class="line">        ctx.error(<span class="string">'Project not found!'</span>);</span><br><span class="line">        //ctx.error(12345,<span class="string">'Project not found!'</span>) 这样也可以，明确指出当错误编码为12345时代表project字段未找到</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">    //逻辑处理</span><br><span class="line">    ....</span><br><span class="line">    ctx.response.body = res;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>就是直接调用ctx.error方法。当调用这个方法后，if后面的逻辑处理就不会再执行了。</p>
 
       
     </div>
@@ -454,8 +370,8 @@ u.sendMsg()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/21/Redux/" rel="next" title="redux">
-                <i class="fa fa-chevron-left"></i> redux
+              <a href="/2018/03/21/ES7中Decorator修饰器/" rel="next" title="ES7中javascript修饰器">
+                <i class="fa fa-chevron-left"></i> ES7中javascript修饰器
               </a>
             
           </div>
@@ -463,10 +379,6 @@ u.sendMsg()
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/21/Koa错误处理/" rel="prev" title="Nodejs-koa之如何优雅的进行错误捕捉和返回">
-                Nodejs-koa之如何优雅的进行错误捕捉和返回 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -584,7 +496,7 @@ u.sendMsg()
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是修饰器"><span class="nav-number">1.</span> <span class="nav-text">什么是修饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修饰类"><span class="nav-number">2.</span> <span class="nav-text">修饰类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修饰类-自定义参数值"><span class="nav-number">3.</span> <span class="nav-text">修饰类(自定义参数值)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修饰方法"><span class="nav-number">4.</span> <span class="nav-text">修饰方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查登录demo"><span class="nav-number">4.1.</span> <span class="nav-text">检查登录demo</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li></ol></div>
             
 
           </div>
@@ -715,9 +627,9 @@ u.sendMsg()
 
     <script type="text/javascript">
       var disqus_shortname = 'your-disqus-shortname';
-      var disqus_identifier = '2018/03/21/ES7中Decorator修饰器/';
+      var disqus_identifier = '2018/03/21/Koa错误处理/';
 
-      var disqus_title = "ES7中javascript修饰器";
+      var disqus_title = "Nodejs-koa之如何优雅的进行错误捕捉和返回";
 
 
       function run_disqus_script(disqus_script) {
